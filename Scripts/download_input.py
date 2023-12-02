@@ -26,8 +26,12 @@ def create_structure(year, day):
     if not os.path.exists(solution_file_path):
         with open(solution_file_path, 'w') as solution_file:
             solution_file.write(f'''# Advent of Code {year} - Day {day}
-def solve(input_data):
-    # Your solution goes here
+def solve_part1(input_data):
+    # Your solution for Part 1 goes here
+    return None
+
+def solve_part2(input_data):
+    # Your solution for Part 2 goes here
     return None
 ''')
 
@@ -40,18 +44,22 @@ def solve(input_data):
     if not os.path.exists(test_file_path):
         with open(test_file_path, 'w') as test_file:
             test_file.write(f'''import pytest
-from y{year}.Day{day}.solution import solve
+from y{year}.Day{day}.solution import solve_part1, solve_part2
 
 @pytest.mark.parametrize("input_data, expected", [
-    # ("input", "expected output"),
-    # Add more test cases here
+    # Part 1 test cases: ("input", "expected output"),
 ])
-def test_solve(input_data, expected):
-    assert solve(input_data) == expected
+def test_solve_part1(input_data, expected):
+    assert solve_part1(input_data) == expected
+
+@pytest.mark.parametrize("input_data, expected", [
+    # Part 2 test cases: ("input", "expected output"),
+])
+def test_solve_part2(input_data, expected):
+    assert solve_part2(input_data) == expected
 ''')
 
     return day_dir
-
 
 def download_input(day, year):
     session_cookie = os.getenv('AOC_SESSION')

@@ -1,16 +1,19 @@
-# This is a sample Python script.
+from y2023.Day1.solution import solve_part2, solve_part1
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    with open('E:/me/projects/Kata/Python/AdventOfCode/y2023/Day1/input.txt', 'r') as file:
+        input_data = file.read()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    test="""
+two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+    """
+    formatted_input = input_data.strip().split('\n')
+    # formatted_input = test.strip().split('\n')
+
+    print(solve_part1(input_data))
