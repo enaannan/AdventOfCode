@@ -44,20 +44,25 @@ def solve_part2(input_data):
     if not os.path.exists(test_file_path):
         with open(test_file_path, 'w') as test_file:
             test_file.write(f'''import pytest
-from y{year}.Day{day}.solution import solve_part1, solve_part2
+            from y{year}.Day{day}.solution import solve_part1, solve_part2
 
-@pytest.mark.parametrize("input_data, expected", [
-    # Part 1 test cases: ("input", "expected output"),
-])
-def test_solve_part1(input_data, expected):
-    assert solve_part1(input_data) == expected
+            # Read input from file
+            def read_input():
+                with open("../y{year}/Day{day}/input.txt", 'r') as file:
+                    return file.read()
 
-@pytest.mark.parametrize("input_data, expected", [
-    # Part 2 test cases: ("input", "expected output"),
-])
-def test_solve_part2(input_data, expected):
-    assert solve_part2(input_data) == expected
-''')
+            @pytest.mark.parametrize("input_data, expected", [
+                (read_input(), None)  # Replace None with the expected result for Part 1
+            ])
+            def test_solve_part1(input_data, expected):
+                assert solve_part1(input_data) == expected
+
+            @pytest.mark.parametrize("input_data, expected", [
+                (read_input(), None)  # Replace None with the expected result for Part 2
+            ])
+            def test_solve_part2(input_data, expected):
+                assert solve_part2(input_data) == expected
+            ''')
 
     return day_dir
 
