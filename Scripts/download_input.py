@@ -84,7 +84,8 @@ def download_input(day, year):
             file.write(response.text)
         print(f"Input downloaded successfully for year {year}, day {day}.")
     else:
-        print(f"Failed to download input: HTTP {response.status_code}")
+        print(f"Failed to download input: HTTP {response.status_code} ({response.reason})")
+
 
 def main():
     parser = argparse.ArgumentParser(description='Download input for an Advent of Code challenge day.')
